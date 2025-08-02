@@ -201,6 +201,12 @@ include 'includes/header.php';
                                 <i class="fas fa-sign-in-alt"></i> Sign In
                             </button>
                         </div>
+                        
+                        <div class="d-grid mt-3">
+                            <a href="index.php" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left"></i> Back to Home
+                            </a>
+                        </div>
                     </form>
                 </div>
                 <div class="card-footer text-center text-muted">
