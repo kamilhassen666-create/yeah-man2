@@ -5,6 +5,9 @@ $page_title = 'Login';
 $error_message = '';
 $success_message = '';
 
+// Get portal type from URL parameter
+$portal_type = $_GET['type'] ?? '';
+
 // Redirect if already logged in
 if (isset($_SESSION['user_id'])) {
     $redirect_url = $_SESSION['user_type'] . '/dashboard.php';
@@ -147,20 +150,20 @@ include 'includes/header.php';
                             </label>
                             <select class="form-select" id="user_type" name="user_type" required>
                                 <option value="">Select User Type</option>
-                                <option value="admin" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'admin') ? 'selected' : ''; ?>>
-                                    <i class="fas fa-user-shield"></i> Admin
+                                <option value="admin" <?php echo ((isset($_POST['user_type']) && $_POST['user_type'] === 'admin') || $portal_type === 'admin') ? 'selected' : ''; ?>>
+                                    🛡️ Admin
                                 </option>
-                                <option value="doctor" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'doctor') ? 'selected' : ''; ?>>
-                                    <i class="fas fa-user-md"></i> Doctor
+                                <option value="doctor" <?php echo ((isset($_POST['user_type']) && $_POST['user_type'] === 'doctor') || $portal_type === 'doctor') ? 'selected' : ''; ?>>
+                                    👨‍⚕️ Doctor
                                 </option>
-                                <option value="patient" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'patient') ? 'selected' : ''; ?>>
-                                    <i class="fas fa-user-injured"></i> Patient
+                                <option value="patient" <?php echo ((isset($_POST['user_type']) && $_POST['user_type'] === 'patient') || $portal_type === 'patient') ? 'selected' : ''; ?>>
+                                    🏥 Patient
                                 </option>
-                                <option value="staff" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'staff') ? 'selected' : ''; ?>>
-                                    <i class="fas fa-user-nurse"></i> Staff
+                                <option value="staff" <?php echo ((isset($_POST['user_type']) && $_POST['user_type'] === 'staff') || $portal_type === 'staff') ? 'selected' : ''; ?>>
+                                    👩‍⚕️ Staff
                                 </option>
-                                <option value="external" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] === 'external') ? 'selected' : ''; ?>>
-                                    <i class="fas fa-building"></i> External Office
+                                <option value="external" <?php echo ((isset($_POST['user_type']) && $_POST['user_type'] === 'external') || $portal_type === 'external') ? 'selected' : ''; ?>>
+                                    🏢 External Health Office
                                 </option>
                             </select>
                             <div class="invalid-feedback">

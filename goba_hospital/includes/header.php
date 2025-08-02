@@ -23,7 +23,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?php echo BASE_URL; ?>">
+            <a class="navbar-brand" href="<?php echo BASE_URL; ?>index.php">
                 <i class="fas fa-hospital"></i>
                 Goba Hospital
             </a>
@@ -49,6 +49,7 @@
                                     <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/manage_doctors.php">Doctors</a></li>
                                     <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/manage_patients.php">Patients</a></li>
                                     <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/manage_staff.php">Staff</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>admin/manage_external.php">External Offices</a></li>
                                 </ul>
                             </li>
                         <?php elseif ($_SESSION['user_type'] === 'doctor'): ?>
@@ -99,6 +100,22 @@
                                     <i class="fas fa-pills"></i> Medications
                                 </a>
                             </li>
+                        <?php elseif ($_SESSION['user_type'] === 'external'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo BASE_URL; ?>external/dashboard.php">
+                                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo BASE_URL; ?>external/patient_transfers.php">
+                                    <i class="fas fa-exchange-alt"></i> Patient Transfers
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo BASE_URL; ?>external/transfer_patient.php">
+                                    <i class="fas fa-share"></i> Transfer Patient
+                                </a>
+                            </li>
                         <?php endif; ?>
                     <?php endif; ?>
                 </ul>
@@ -121,10 +138,32 @@
                             </ul>
                         </li>
                     <?php else: ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo BASE_URL; ?>login.php">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown">
                                 <i class="fas fa-sign-in-alt"></i> Login
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Choose Portal</h6></li>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>login.php?type=admin">
+                                    <i class="fas fa-user-shield text-danger"></i> Admin Portal
+                                </a></li>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>login.php?type=doctor">
+                                    <i class="fas fa-user-md text-primary"></i> Doctor Portal
+                                </a></li>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>login.php?type=patient">
+                                    <i class="fas fa-user-injured text-success"></i> Patient Portal
+                                </a></li>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>login.php?type=staff">
+                                    <i class="fas fa-user-nurse text-info"></i> Staff Portal
+                                </a></li>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>login.php?type=external">
+                                    <i class="fas fa-building text-warning"></i> External Health Office
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>login.php">
+                                    <i class="fas fa-sign-in-alt"></i> General Login
+                                </a></li>
+                            </ul>
                         </li>
                     <?php endif; ?>
                 </ul>
