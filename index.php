@@ -75,8 +75,8 @@ startSession();
                         Access medical information securely and efficiently.
                     </p>
                     <div class="d-flex gap-3">
-                        <a href="login.php" class="btn btn-light btn-lg">
-                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        <a href="#portals" class="btn btn-light btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>Access Portals
                         </a>
                         <a href="about.php" class="btn btn-outline-light btn-lg">
                             <i class="fas fa-info-circle me-2"></i>Learn More
@@ -91,7 +91,7 @@ startSession();
     </section>
 
     <!-- Portal Selection -->
-    <section class="py-5">
+    <section id="portals" class="py-5">
         <div class="container">
             <div class="row text-center mb-5">
                 <div class="col-12">
@@ -110,8 +110,8 @@ startSession();
                             </div>
                             <h5 class="card-title">Patient Portal</h5>
                             <p class="card-text">View your medical records, manage appointments, and process payments.</p>
-                            <a href="patient/" class="btn btn-primary">
-                                <i class="fas fa-arrow-right me-2"></i>Access Portal
+                            <a href="login.php?portal=patient" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login to Portal
                             </a>
                         </div>
                     </div>
@@ -126,8 +126,8 @@ startSession();
                             </div>
                             <h5 class="card-title">Doctor Portal</h5>
                             <p class="card-text">Record consultations, surgeries, and access patient medical history.</p>
-                            <a href="doctor/" class="btn btn-success">
-                                <i class="fas fa-arrow-right me-2"></i>Access Portal
+                            <a href="login.php?portal=doctor" class="btn btn-success">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login to Portal
                             </a>
                         </div>
                     </div>
@@ -142,8 +142,8 @@ startSession();
                             </div>
                             <h5 class="card-title">Staff Portal</h5>
                             <p class="card-text">Manage medication dosages and patient information.</p>
-                            <a href="staff/" class="btn btn-info text-white">
-                                <i class="fas fa-arrow-right me-2"></i>Access Portal
+                            <a href="login.php?portal=staff" class="btn btn-info text-white">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login to Portal
                             </a>
                         </div>
                     </div>
@@ -158,8 +158,8 @@ startSession();
                             </div>
                             <h5 class="card-title">Admin Portal</h5>
                             <p class="card-text">Manage users, hospitals, and system administration.</p>
-                            <a href="admin/" class="btn btn-warning text-dark">
-                                <i class="fas fa-arrow-right me-2"></i>Access Portal
+                            <a href="login.php?portal=admin" class="btn btn-warning text-dark">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login to Portal
                             </a>
                         </div>
                     </div>
@@ -305,5 +305,24 @@ startSession();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
+    
+    <script>
+    // Smooth scroll to portals section
+    document.addEventListener('DOMContentLoaded', function() {
+        const accessPortalsBtn = document.querySelector('a[href="#portals"]');
+        if (accessPortalsBtn) {
+            accessPortalsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const portalsSection = document.getElementById('portals');
+                if (portalsSection) {
+                    portalsSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>

@@ -132,17 +132,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php endif; ?>
                         
                         <form method="POST" action="">
-                            <div class="mb-3">
-                                <label for="user_type" class="form-label">User Type</label>
-                                <select class="form-select" id="user_type" name="user_type" required>
-                                    <option value="">Select User Type</option>
-                                    <option value="patient">Patient</option>
-                                    <option value="doctor">Doctor</option>
-                                    <option value="staff">Medical Staff</option>
-                                    <option value="admin">Administrator</option>
-                                    <option value="external">External Health Office</option>
-                                </select>
-                            </div>
+                                                            <div class="mb-3">
+                                    <label for="user_type" class="form-label">User Type</label>
+                                    <select class="form-select" id="user_type" name="user_type" required>
+                                        <option value="">Select User Type</option>
+                                        <option value="patient" <?php echo (isset($_GET['portal']) && $_GET['portal'] == 'patient') ? 'selected' : ''; ?>>Patient</option>
+                                        <option value="doctor" <?php echo (isset($_GET['portal']) && $_GET['portal'] == 'doctor') ? 'selected' : ''; ?>>Doctor</option>
+                                        <option value="staff" <?php echo (isset($_GET['portal']) && $_GET['portal'] == 'staff') ? 'selected' : ''; ?>>Medical Staff</option>
+                                        <option value="admin" <?php echo (isset($_GET['portal']) && $_GET['portal'] == 'admin') ? 'selected' : ''; ?>>Administrator</option>
+                                        <option value="external" <?php echo (isset($_GET['portal']) && $_GET['portal'] == 'external') ? 'selected' : ''; ?>>External Health Office</option>
+                                    </select>
+                                </div>
                             
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
